@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.mathcoach</groupId>
+    <artifactId>sablecc</artifactId>
+    <version>3.7</version>
+    <packaging>jar</packaging>
+
+
+    <name>sablecc</name>
+	<description>
+        Redistribution of the SableCC 3.7 in a Maven-like Style
+	</description>
+    <url>https://sablecc.org</url>
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public</name>
+            <distribution>repo</distribution>
+        </license>
+
+        <license>
+            <name>The BSD 3-Clause License (For this pom.xml)</name>
+            <url>http://opensource.org/licenses/BSD-3-Clause</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/SableCC/sablecc</url>
+    </scm>
+	<developers>
+		<developer>
+			<name>Etienne Gagnon</name>
+			<email>egagnon@j-meg.com</email>
+			<roles>
+				<role>Founder and Author of SableCC</role>
+			</roles>
+		</developer>
+		<developer>
+            <name>Hong Phuc Bui</name>
+            <email>hong-phuc.bui@htwsaar.de</email>
+			<roles>
+                <role>Redistribute the SablCC 3.7 in a Maven-like Style</role>
+			</roles>
+		</developer>
+	</developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+
+	<inceptionYear>2013</inceptionYear>
+
+    <build>
+        <sourceDirectory>sablecc-3.7/src</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+				<configuration>
+                    <doclint>none</doclint>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+            </plugin>
+
+		</plugins>
+	</build>
+
+</project>
