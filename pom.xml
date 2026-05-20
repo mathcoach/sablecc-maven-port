@@ -4,7 +4,7 @@
 
     <groupId>io.github.mathcoach</groupId>
     <artifactId>sablecc</artifactId>
-    <version>3.7</version>
+    <version>3.7-java21</version>
     <packaging>jar</packaging>
 
 
