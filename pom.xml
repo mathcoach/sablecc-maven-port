@@ -48,8 +48,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
     </properties>
 
 
@@ -75,7 +74,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.4.0</version>
                 <configuration>
                     <doclint>none</doclint>
                 </configuration>
@@ -93,8 +92,7 @@
                 <version>3.5.0</version>
                 <executions>
                     <execution>
-                        <id>copy-parser.dat</id>
-                        <!-- here the phase you need -->
+                        <id>copy-parser.dat</id>                        
                         <phase>validate</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -112,8 +110,7 @@
                         </configuration>   
                     </execution>
                     <execution>
-                        <id>copy-lexer.dat</id>
-                        <!-- here the phase you need -->
+                        <id>copy-lexer.dat</id>                        
                         <phase>validate</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -131,8 +128,7 @@
                         </configuration>   
                     </execution>
                     <execution>
-                        <id>copy-text-filest</id>
-                        <!-- here the phase you need -->
+                        <id>copy-text-filest</id>                        
                         <phase>validate</phase>
                         <goals>
                             <goal>copy-resources</goal>
