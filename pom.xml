@@ -1,17 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.mathcoach</groupId>
-    <artifactId>sablecc</artifactId>
-    <version>3.7-java21</version>
+    <artifactId>sablecc-java21</artifactId>
+    <version>3.7-SNAPSHOT</version>
     <packaging>jar</packaging>
 
 
     <name>sablecc</name>
-	<description>
+    <description>
         Redistribution of the SableCC 3.7 in a Maven-like Style
-	</description>
+    </description>
     <url>https://sablecc.org</url>
     <licenses>
         <license>
@@ -29,22 +29,22 @@
     <scm>
         <url>https://github.com/SableCC/sablecc</url>
     </scm>
-	<developers>
-		<developer>
-			<name>Etienne Gagnon</name>
-			<email>egagnon@j-meg.com</email>
-			<roles>
-				<role>Founder and Author of SableCC</role>
-			</roles>
-		</developer>
-		<developer>
+    <developers>
+        <developer>
+            <name>Etienne Gagnon</name>
+            <email>egagnon@j-meg.com</email>
+            <roles>
+                <role>Founder and Author of SableCC</role>
+            </roles>
+        </developer>
+        <developer>
             <name>Hong Phuc Bui</name>
             <email>hong-phuc.bui@htwsaar.de</email>
-			<roles>
+            <roles>
                 <role>Redistribute the SablCC 3.7 in a Maven-like Style</role>
-			</roles>
-		</developer>
-	</developers>
+            </roles>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -53,7 +53,7 @@
     </properties>
 
 
-	<inceptionYear>2013</inceptionYear>
+    <inceptionYear>2013</inceptionYear>
 
     <build>
         <sourceDirectory>sablecc-3.7/src</sourceDirectory>
@@ -72,25 +72,93 @@
                 </executions>
             </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.2.0</version>
-				<configuration>
+                <configuration>
                     <doclint>none</doclint>
-				</configuration>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-parser.dat</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>                            
+                            <outputDirectory>${basedir}/target/classes/org/sablecc/sablecc/parser</outputDirectory>
+                            <resources>                                
+                                <resource>
+                                    <directory>${project.basedir}/sablecc-3.7/src/org/sablecc/sablecc/parser</directory>
+                                    <includes>
+                                        <include>parser.dat</include>
+                                    </includes>                                    
+                                </resource>
+                            </resources>              
+                        </configuration>   
+                    </execution>
+                    <execution>
+                        <id>copy-lexer.dat</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>                            
+                            <outputDirectory>${basedir}/target/classes/org/sablecc/sablecc/lexer</outputDirectory>
+                            <resources>                                
+                                <resource>
+                                    <directory>${project.basedir}/sablecc-3.7/src/org/sablecc/sablecc/lexer</directory>
+                                    <includes>
+                                        <include>lexer.dat</include>
+                                    </includes>                                    
+                                </resource>
+                            </resources>              
+                        </configuration>   
+                    </execution>
+                    <execution>
+                        <id>copy-text-filest</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>                            
+                            <outputDirectory>${basedir}/target/classes/org/sablecc/sablecc</outputDirectory>
+                            <resources>                                
+                                <resource>
+                                    <directory>${project.basedir}/sablecc-3.7/src/org/sablecc/sablecc</directory>
+                                    <includes>
+                                        <include>*.txt</include>
+                                        <include>AUTHORS</include>
+                                        <include>COPYING-LESSER</include>
+                                    </includes>                                    
+                                </resource>
+                            </resources>              
+                        </configuration>   
+                    </execution>
+                </executions>
+            </plugin>
+            
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.0.1</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -110,7 +178,7 @@
                     <publishingServerId>${useServer}</publishingServerId>
                 </configuration>
             </plugin>
-		</plugins>
-	</build>
+        </plugins>
+    </build>
 
 </project>
