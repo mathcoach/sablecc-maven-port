@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.mathcoach</groupId>
-    <artifactId>sablecc-java21</artifactId>
-    <version>3.7</version>
+    <artifactId>sablecc-java25</artifactId>
+    <version>3.7-SNAPSHOT</version>
     <packaging>jar</packaging>
 
 
@@ -77,6 +77,11 @@
                 <version>3.4.0</version>
                 <configuration>
                     <doclint>none</doclint>
+                    <excludePackageNames>
+                        org.sablecc.sablecc.node,
+                        org.sablecc.sablecc.lexer,
+                        org.sablecc.sablecc.parser
+                    </excludePackageNames>
                 </configuration>
                 <executions>
                     <execution>
